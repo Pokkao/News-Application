@@ -1,19 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 android:layout_width="match_parent"
                   android:layout_height="wrap_content"
                   android:orientation="vertical"
                   android:background="@color/colorGray">
 
-        <LinearLayout   android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:background="@color/colorWhite"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginTop="5dp"
-                        android:layout_marginRight="10dp"
-                        android:layout_marginBottom="3dp">
+        <LinearLayout
+                android:id="@+id/rv_item_news"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="@color/colorWhite"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="3dp">
 
             <ImageView
                        android:id="@+id/Image_topic"
@@ -23,30 +25,75 @@
                        android:layout_marginTop="5dp"
                        android:background="@color/colorGray"/>
 
+        <RelativeLayout android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+            <ImageButton
+                    android:id="@+id/bt_ic_starborder"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="4dp"
+                    android:src="@drawable/im_follow_star_news"
+                    android:background="?selectableItemBackground"/>
+
             <TextView
                     android:id="@+id/text_topic"
-                    android:layout_width="310dp"
+                    android:layout_width="330dp"
                     android:layout_height="25dp"
                     android:paddingLeft="13dp"
                     android:paddingTop="4dp"
                     android:text="HI I'm Pokkao"
                     android:textSize="15dp"
-                    android:maxLength="40"
-                    android:textStyle="bold"/>
+                    android:maxLength="45"
+                    android:textStyle="bold"
+                    android:layout_toLeftOf="@id/bt_ic_starborder"/>
 
-            <View android:layout_width="300dp"
+            <View
+                    android:id="@+id/lines1"
+                    android:layout_width="320dp"
                   android:layout_height="1dp"
                   android:layout_marginLeft="10dp"
-                  android:background="@color/colorBlack">
+                  android:layout_alignBottom="@id/text_topic"
+                  android:background="@color/colorBlack"
+                    android:layout_toLeftOf="@id/bt_ic_starborder">
             </View>
 
             <TextView
                     android:id="@+id/text_sub_content"
-                    android:layout_width="310dp"
+                    android:layout_width="320dp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
                     android:text="context"
+                    android:layout_below="@id/lines1"
                     android:padding="4dp"
-                    android:maxLength="85"/>
+                    android:layout_toLeftOf="@id/bt_ic_starborder"/>
+
+            </RelativeLayout>
+
+                <RelativeLayout android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginRight="5dp">
+
+                    <TextView
+                            android:id="@+id/Realtime_date"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:maxLength="10"
+                            android:textSize="11dp"
+                            android:text="date"/>
+
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:maxLength="10"
+                            android:text="DATE : "
+                            android:textSize="11dp"
+                            android:layout_toStartOf="@id/Realtime_date"
+                            android:layout_toLeftOf="@id/Realtime_date"/>
+
+                </RelativeLayout>
         </LinearLayout>
-    </LinearLayout>
+    </RelativeLayout>
