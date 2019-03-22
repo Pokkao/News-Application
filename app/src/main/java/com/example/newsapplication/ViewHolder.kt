@@ -52,8 +52,11 @@ class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
             Image_topic.setOnClickListener {
 //
+
 //                pages!!.ProfileNews(position)
-                mainActivity.ProfileNews(position)
+                mainActivity.ProfileNews(position, item.title!!, item.urlToImage!!, item.author!!,
+                    item.content!!,item.publishedAt!!,item.url!!,item.description!!)
+
 
 //                Log.i("Profile","Viewholder")
             }

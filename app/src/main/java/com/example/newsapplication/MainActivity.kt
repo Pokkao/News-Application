@@ -3,14 +3,23 @@ package com.example.newsapplication
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
+import com.example.newsapplication.ModelItem.Source
 
 class MainActivity : AppCompatActivity() {
+
+    var publishedAt: String? = null
+    var author: String? = null
+    var urlToImage: String? = null
+    var description: String? = null
+    var source: Source? = null
+    var title: String? = null
+    var url: String? = null
+    var content: String? = null
+    lateinit var fmpagenews : PageNews
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
          ProfileNews()
 
 //        querySlowDatabase { value ->  //update UI here
@@ -33,17 +42,21 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-    fun ProfileNews(position: Int) {
-        val fragment = PageNews()
+    fun ProfileNews(position: Int, title: String, urlToImage: String, author: String, content: String, publishedAt: String, url: String, desc:String) {
+        val fragment = PageNews
 
         supportFragmentManager.beginTransaction()
-            .replace(R.id.fragment_profile_news, fragment, "findThisFragment")
+            .add(R.id.fragment_profile_news,  PageNews.newInstance(title,urlToImage,author,content,publishedAt,url,desc) , "findThisFragment")
             .addToBackStack(null)
             .commit()
 
-        Log.i("c","Fragment $position")
+
+//        Log.i("c","Fragment $position")
+//        Log.i("aaaaa","Fragment $title")
+//        Log.i("vvvv","Fragment $author")
 
     }
+
 
     //    public override fun onSaveInstanceState(savedInstanceState: Bundle) {
 //        super.onSaveInstanceState(savedInstanceState)
