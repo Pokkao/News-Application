@@ -3,34 +3,51 @@ package com.example.newsapplication
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import com.example.newsapplication.ModelItem.Source
+import kotlinx.android.synthetic.main.activity_main.*
+import android.view.Menu
+import android.view.MenuItem
+import android.widget.Toast
+
 
 class MainActivity : AppCompatActivity() {
-
-    var publishedAt: String? = null
-    var author: String? = null
-    var urlToImage: String? = null
-    var description: String? = null
-    var source: Source? = null
-    var title: String? = null
-    var url: String? = null
-    var content: String? = null
-    lateinit var fmpagenews : PageNews
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-         ProfileNews()
-
-//        querySlowDatabase { value ->  //update UI here
-//            Log.d("Callback","Value of Callback func : $value")
-//        }
+        settitlebar()
+        ProfileNews()
 
     }
 
-    private fun querySlowDatabase(callback: (value: Int) -> Unit) {
-        val a =1
-        callback.invoke(a)
+    fun settitlebar() {
+        setSupportActionBar(my_toolbar)
+        supportActionBar!!.setDisplayShowTitleEnabled(false)
+    }
+
+    fun setupTitleName(position: Int?) {
+        var a = position!! + 1
+        tv_toolbar.text = "News $a"
+    }
+
+    fun setupTitle() {
+        tv_toolbar.text = "News Application"
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        menuInflater.inflate(R.menu.menu_main, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        val id = item.itemId
+
+        if (id == R.id.action_favorite) {
+            Toast.makeText(this@MainActivity, "Thank you for Click! :)", Toast.LENGTH_LONG).show()
+            return true
+        }
+
+        return super.onOptionsItemSelected(item)
     }
 
 
@@ -42,51 +59,14 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-    fun ProfileNews(position: Int, title: String, urlToImage: String, author: String, content: String, publishedAt: String, url: String, desc:String) {
+    fun ProfileNews(position: Int, title: String, urlToImage: String, author: String, content: String, publishedAt: String, url: String, desc: String) {
         val fragment = PageNews
 
         supportFragmentManager.beginTransaction()
-            .add(R.id.fragment_profile_news,  PageNews.newInstance(title,urlToImage,author,content,publishedAt,url,desc) , "findThisFragment")
+            .add(R.id.fragment_profile_news,  PageNews.newInstance(position,title,urlToImage,author,content,publishedAt,url,desc) , "findThisFragment")
             .addToBackStack(null)
             .commit()
-
-
-//        Log.i("c","Fragment $position")
-//        Log.i("aaaaa","Fragment $title")
-//        Log.i("vvvv","Fragment $author")
-
     }
 
-
-    //    public override fun onSaveInstanceState(savedInstanceState: Bundle) {
-//        super.onSaveInstanceState(savedInstanceState)
-//        // Save UI state changes to the savedInstanceState.
-//        // This bundle will be passed to onCreate if the process is
-//        // killed and restarted.
-////        savedInstanceState.putBoolean("MyBoolean", true)
-////        savedInstanceState.putDouble("myDouble", 1.9)
-////        savedInstanceState.putInt("MyInt", 1)
-////        savedInstanceState.putString("MyString", "Welcome back to Android")
-////        savedInstanceState.putParcelable("ListState", recycler_view.layoutManager!!.onSaveInstanceState())
-//
-////        savedInstanceState.putParcelable(BUNDLE_RECYCLER_LAYOUT,
-////            mRvLayoutManager!!.onSaveInstanceState())
-//
-//        savedRecyclerLayoutState = rv!!.layoutManager!!.onSaveInstanceState()
-//    }
-//
-//    public override fun onRestoreInstanceState(savedInstanceState: Bundle) {
-//        super.onRestoreInstanceState(savedInstanceState)
-//        // Restore UI state from the savedInstanceState.
-//        // This bundle has also been passed to onCreate.
-////        val myBoolean = savedInstanceState.getBoolean("MyBoolean")
-////        val myDouble = savedInstanceState.getDouble("myDouble")
-////        val myInt = savedInstanceState.getInt("MyInt")
-////        val myString = savedInstanceState.getString("MyString")
-//
-////        savedRecyclerLayoutState = savedInstanceState.getParcelable(BUNDLE_RECYCLER_LAYOUT)
-//
-//        rv!!.layoutManager!!.onRestoreInstanceState(savedRecyclerLayoutState)
-//    }
 
 }

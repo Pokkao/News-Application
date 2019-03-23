@@ -14,7 +14,7 @@
 
         <ImageView
                    android:id="@+id/im_page_topic"
-                   android:layout_width="405dp"
+                   android:layout_width="390dp"
                    android:layout_height="220dp"
                    android:layout_gravity="center"
                    android:background="@color/colorGray"/>
@@ -93,6 +93,7 @@
                         android:id="@+id/line4"
                         android:layout_width="370dp"
                         android:layout_height="1dp"
+                        android:layout_marginRight="10dp"
                         android:layout_marginLeft="10dp"
                         android:layout_marginTop="5dp"
                         android:layout_below="@id/tv_content"

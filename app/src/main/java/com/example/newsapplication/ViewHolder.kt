@@ -1,7 +1,7 @@
 package com.example.newsapplication
 
-import android.content.Context
 import android.support.v7.widget.RecyclerView
+import android.util.Log
 import android.view.View
 import com.bumptech.glide.Glide
 import com.example.newsapplication.ModelItem.ArticlesItem
@@ -9,22 +9,7 @@ import kotlinx.android.synthetic.main.main_recycleview.view.*
 import android.util.SparseBooleanArray
 
 class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-//    override fun onClick(v: View?) {
-//        Toast.makeText(context,
-//                "ImageButton (selector) is clicked!$position",
-//                Toast.LENGTH_SHORT).show()
-//    }
 
-
-    private var pagenews: PageNewsFragment? = null
-    var myFragmentNew=PageNewsFragment()
-
-
-    var listCurrentSelect: ArrayList<ArticlesItem> = arrayListOf()
-//    lateinit var data :ArticlesItem
-    var sparseBooleanArray: SparseBooleanArray? = null
-    var selectedItemCount = 0
-//    private val items: ArrayList<ArticlesItem>? = null
 
     init {
 //Ex1        this.context = context
@@ -38,27 +23,20 @@ class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
     ) {
 
         with(itemView){
-//            pagenews = pages
-
-//            itemView.setOnClickListener(this@ViewHolder)
-//            this.myFragmentNew = myFragmentNew
 
             text_topic.text = item.title
             text_sub_content.text = item.description
             Glide.with(context).load(item.urlToImage).into(Image_topic)
             Realtime_date.text = item.publishedAt
 
-//            val intent = Intent()
 
             Image_topic.setOnClickListener {
-//
+                val integer = Integer.valueOf(position)
+//                Log.i("Profile","$integer")
 
-//                pages!!.ProfileNews(position)
-                mainActivity.ProfileNews(position, item.title!!, item.urlToImage!!, item.author!!,
+                mainActivity.ProfileNews(integer, item.title!!, item.urlToImage!!, item.author!!,
                     item.content!!,item.publishedAt!!,item.url!!,item.description!!)
 
-
-//                Log.i("Profile","Viewholder")
             }
 
             bt_ic_starborder.setOnClickListener{

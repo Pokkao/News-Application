@@ -4,7 +4,7 @@
                 android:layout_width="match_parent"
                   android:layout_height="wrap_content"
                   android:orientation="vertical"
-                  android:background="@color/colorGray">
+                  android:background="@color/calendar_current_selected_day_background_color">
 
         <LinearLayout
                 android:id="@+id/rv_item_news"

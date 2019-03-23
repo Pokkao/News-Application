@@ -20,13 +20,13 @@ class PageNews : Fragment() {
     var date:String? = null
     var url:String?=null
     var desc: String?=null
+    var position:Int?=null
 
     var activityMain:MainActivity?=null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         activityMain = activity as MainActivity
-
 
         if(savedInstanceState==null) {
             title = arguments!!.getString("key_title")
@@ -36,6 +36,7 @@ class PageNews : Fragment() {
             date = arguments!!.getString("key_publishedAt")
             url = arguments!!.getString("key_url")
             desc = arguments!!.getString("key_description")
+            position = arguments!!.getInt("key_position")
         } else {
             title = savedInstanceState.getString("key_title")
             urlToImage = savedInstanceState.getString("key_urlToImage")
@@ -44,6 +45,7 @@ class PageNews : Fragment() {
             date = savedInstanceState.getString("key_publishedAt")
             url = savedInstanceState.getString("key_url")
             desc = savedInstanceState.getString("key_description")
+            position = arguments!!.getInt("key_position")
         }
     }
 
@@ -55,9 +57,19 @@ class PageNews : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        settitlebar(position)
         setView()
         initListener(url)
 
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        activityMain!!.setupTitle()
+    }
+
+    private fun settitlebar(position: Int?) {
+        activityMain!!.setupTitleName(position)
     }
 
     private fun initListener(url: String?) {
@@ -80,6 +92,7 @@ class PageNews : Fragment() {
 
     companion object {
             fun newInstance(
+                position: Int,
                 title: String,
                 urlToImage: String,
                 author: String,
@@ -90,6 +103,7 @@ class PageNews : Fragment() {
             ): PageNews{
                 val fm =PageNews()
                 val bundle = Bundle()
+                bundle.putInt("key_position",position)
                 bundle.putString("key_title",title)
                 bundle.putString("key_urlToImage",urlToImage)
                 bundle.putString("key_author",author)
