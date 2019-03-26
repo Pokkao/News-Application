@@ -59,9 +59,18 @@ class PageNews : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        settitlebar(position)
+        settitlebar(title)
         setView()
         initListener(url)
+        initListenerBack()
+
+    }
+
+    private fun initListenerBack() {
+            im_page_back_to_main.setOnClickListener {
+                activity!!.onBackPressed()
+
+            }
 
     }
 
@@ -70,8 +79,8 @@ class PageNews : Fragment() {
         activityMain!!.setupTitle()
     }
 
-    private fun settitlebar(position: Int?) {
-        activityMain!!.setupTitleName(position)
+    private fun settitlebar(title: String?) {
+        activityMain!!.setupTitleName(title)
     }
 
     private fun initListener(url: String?) {

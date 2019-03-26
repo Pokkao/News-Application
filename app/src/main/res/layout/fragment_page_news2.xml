@@ -3,56 +3,128 @@
              xmlns:tools="http://schemas.android.com/tools"
              android:layout_width="wrap_content"
              android:layout_height="match_parent"
-             android:background="@color/colorWhite"
+             android:background="@color/tab_selected_dialog"
              android:layout_centerHorizontal="true"
              android:clickable="true"
              android:focusable="true">
+
+    <ScrollView android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:scrollbars="none">
+
+
 
     <LinearLayout android:layout_width="match_parent"
                   android:layout_height="wrap_content"
                   android:orientation="vertical">
 
-        <ImageView
-                   android:id="@+id/im_page_topic"
-                   android:layout_width="390dp"
-                   android:layout_height="220dp"
-                   android:layout_gravity="center"
-                   android:background="@color/colorGray"/>
+                <RelativeLayout android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center">
+
+                    <ImageView
+                               android:id="@+id/im_page_topic"
+                               android:layout_width="390dp"
+                               android:layout_height="210dp"
+                               android:background="@color/colorGray"
+                               android:scaleType="fitXY"/>
+
+                    <ImageView
+                            android:id="@+id/im_page_back_to_main"
+                            android:layout_width="35dp"
+                            android:layout_height="35dp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginTop="10dp"
+                            android:background="@drawable/ic_arraw_back_page"
+                            android:clickable="true"
+                            android:focusable="true"/>
+                </RelativeLayout>
+
+            <RelativeLayout android:layout_width="wrap_content"
+                            android:layout_height="wrap_content">
+
+                <TextView
+                        android:id="@+id/tv_author"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:maxLength="10"
+                        android:text="Author : "
+                        android:textSize="13dp"
+                        android:layout_marginLeft="15dp"
+                        android:layout_alignParentLeft="true"/>
+
+                <TextView
+                        android:id="@+id/tv_page_author"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:maxLength="10"
+                        android:textSize="13dp"
+                        android:text="author"
+                        android:layout_toRightOf="@id/tv_author"
+                        android:layout_marginRight="8dp"/>
+
+                    <TextView
+                            android:id="@+id/tv_slas"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="|"
+                            android:textStyle="bold"
+                            android:layout_toRightOf="@id/tv_page_author"/>
+
+                <TextView
+                        android:id="@+id/tv_date"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:maxLength="10"
+                        android:text="DATE : "
+                        android:textSize="13dp"
+                        android:layout_toRightOf="@id/tv_slas"
+                        android:layout_marginLeft="8dp"/>
+
+                <TextView
+                        android:id="@+id/tv_page_realtime_date"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:maxLength="10"
+                        android:textSize="13dp"
+                        android:text="date"
+                        android:layout_toRightOf="@id/tv_date"
+                        android:layout_marginLeft="3dp"/>
+
+
+            </RelativeLayout>
 
             <RelativeLayout
                             android:id="@+id/relative_content"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content">
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="20dp">
+
                 <TextView
                         android:id="@+id/text_page_topic"
                         android:layout_width="385dp"
                         android:layout_height="wrap_content"
                         android:paddingLeft="13dp"
-                        android:paddingTop="6dp"
+                        android:paddingTop="5dp"
                         android:paddingBottom="5dp"
+                        android:layout_marginRight="10dp"
                         android:text="HI I'm Pokkao"
-                        android:textSize="16dp"
-                        android:textStyle="bold"
-                        android:maxLength="55"
-                        android:background="@color/natural_green"/>
-                <View
-                        android:id="@+id/lines2"
-                        android:layout_width="430dp"
-                        android:layout_height="1dp"
-                        android:layout_below="@id/text_page_topic"
-                        android:background="@color/colorBlack"/>
+                        android:textSize="19dp"
+                        android:textStyle="normal"
+                        android:textColor="@color/colorBlack"/>
+
 
                 <TextView
                         android:id="@+id/tv_description"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_below="@id/lines2"
+                        android:layout_below="@id/text_page_topic"
                         android:layout_marginTop="5dp"
                         android:layout_marginLeft="10dp"
                         android:textSize="14dp"
                         android:text="DESCRIPTION "
                         android:textStyle="bold"
-                        android:background="@color/colorPrimary"/>
+                        android:textColor="@color/black_opacity05"/>
 
                 <TextView
                         android:id="@+id/tv_page_desc"
@@ -62,8 +134,7 @@
                         android:text="context"
                         android:layout_below="@id/tv_description"
                         android:layout_marginRight="8dp"
-                        android:padding="4dp"
-                        android:background="@color/dark_honest_green"/>
+                        android:padding="4dp"/>
 
                 <TextView
                         android:id="@+id/tx_content"
@@ -75,7 +146,7 @@
                         android:textSize="14dp"
                         android:textStyle="bold"
                         android:text="CONTENT"
-                        android:background="@color/colorPrimary"/>
+                        android:textColor="@color/black_opacity05"/>
 
                 <TextView
                         android:id="@+id/tv_content"
@@ -86,8 +157,7 @@
                         android:layout_marginLeft="10dp"
                         android:layout_marginRight="8dp"
                         android:textSize="14dp"
-                        android:text="CONTENT"
-                        android:background="@color/dark_honest_green"/>
+                        android:text="CONTENT"/>
 
                 <View
                         android:id="@+id/line4"
@@ -116,70 +186,14 @@
                           android:layout_marginLeft="20dp"
                           android:text="http//:google.com"
                           android:layout_marginRight="20dp"
+                          android:ellipsize="end"
+                          android:maxLines="1"
                           android:clickable="true"/>
 
             </RelativeLayout>
 
-                 <RelativeLayout android:layout_width="match_parent"
-                                 android:layout_height="wrap_content"
-                                 android:layout_marginRight="10dp"
-                                 android:layout_marginTop="7dp"
-                                 android:layout_marginBottom="5dp">
-
-                    <TextView
-                            android:id="@+id/tv_page_realtime_date"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_alignParentRight="true"
-                            android:layout_alignParentBottom="true"
-                            android:maxLength="10"
-                            android:textSize="13dp"
-                            android:text="date"/>
-
-                    <TextView
-                            android:id="@+id/tv_date"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:maxLength="10"
-                            android:text="DATE : "
-                            android:textSize="13dp"
-                            android:layout_alignParentBottom="true"
-                            android:layout_toStartOf="@id/tv_page_realtime_date"
-                            android:layout_toLeftOf="@id/tv_page_realtime_date"/>
-
-                         <TextView
-                                   android:id="@+id/tv_slas"
-                                   android:layout_width="wrap_content"
-                                   android:layout_height="wrap_content"
-                                   android:text="|"
-                                   android:textStyle="bold"
-                                   android:layout_alignParentBottom="true"
-                                   android:layout_toLeftOf="@id/tv_date"
-                                   android:layout_marginRight="15dp"/>
-
-                     <TextView
-                             android:id="@+id/tv_page_author"
-                             android:layout_width="wrap_content"
-                             android:layout_height="wrap_content"
-                             android:maxLength="10"
-                             android:textSize="13dp"
-                             android:text="author"
-                             android:layout_alignParentBottom="true"
-                             android:layout_toLeftOf="@id/tv_date"
-                             android:layout_marginRight="30dp"/>
-
-                     <TextView
-                             android:id="@+id/tv_author"
-                             android:layout_width="wrap_content"
-                             android:layout_height="wrap_content"
-                             android:maxLength="10"
-                             android:text="Author : "
-                             android:textSize="13dp"
-                             android:layout_alignParentBottom="true"
-                             android:layout_toLeftOf="@id/tv_page_author"/>
 
 
-                </RelativeLayout>
-
-    </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
 </FrameLayout>

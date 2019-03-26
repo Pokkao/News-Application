@@ -7,6 +7,7 @@ import com.example.newsapplication.R
 import com.example.newsapplication.model.ArticlesItem
 import com.example.newsapplication.module.activity.MainActivity
 import com.example.newsapplication.module.fragment.PageNewsFragment
+import kotlinx.android.synthetic.main.fragment_page_news2.view.*
 import kotlinx.android.synthetic.main.main_recycleview.view.*
 
 class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
@@ -39,6 +40,7 @@ class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
                     item.content!!,item.publishedAt!!,item.url!!,item.description!!)
 
             }
+
 
             bt_ic_starborder.setOnClickListener{
             if(!bt_ic_starborder.isSelected){

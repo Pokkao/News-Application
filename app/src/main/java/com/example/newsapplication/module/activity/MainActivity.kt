@@ -1,9 +1,11 @@
 package com.example.newsapplication.module.activity
 
 
+import android.app.PendingIntent.getActivity
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Parcelable
+import android.util.Log
 import kotlinx.android.synthetic.main.activity_main.*
 import android.view.Menu
 import android.view.MenuItem
@@ -12,6 +14,8 @@ import com.example.newsapplication.module.fragment.PageNewsFragment
 import com.example.newsapplication.R
 import com.example.newsapplication.module.fragment.PageNews
 import kotlinx.android.synthetic.main.fragment_page_news.*
+import kotlinx.android.synthetic.main.fragment_page_news2.*
+import kotlinx.android.synthetic.main.fragment_page_news2.view.*
 
 
 class MainActivity : AppCompatActivity() {
@@ -26,19 +30,20 @@ class MainActivity : AppCompatActivity() {
 
     }
 
+
     fun settitlebar() {
         setSupportActionBar(my_toolbar)
         supportActionBar!!.setDisplayShowTitleEnabled(false)
     }
 
-    fun setupTitleName(position: Int?) {
-        var a = position!! + 1
-        tv_toolbar.text = "News $a"
+    fun setupTitleName(title: String?) {
+        tv_toolbar.text = "$title"
     }
 
     fun setupTitle() {
         tv_toolbar.text = "News Application"
     }
+
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         // Inflate the menu; this adds items to the action bar if it is present.
