@@ -7,7 +7,7 @@
 
     <RelativeLayout android:layout_width="match_parent"
                     android:layout_height="match_parent"
-    android:background="@color/calendar_current_selected_day_background_color">
+    android:background="@color/white_opacity80">
 
 
             <TextView
@@ -17,9 +17,9 @@
                       android:text="All News"
                       android:textStyle="bold"
                       android:textSize="15dp"
-                      android:textColor="@color/colorWhite"
+                      android:textColor="@color/black_opacity05"
                       android:layout_marginLeft="10dp"
-                      android:layout_marginTop="5dp"
+                      android:layout_marginTop="7dp"
                       android:layout_marginBottom="2dp"/>
 
             <android.support.v7.widget.RecyclerView
