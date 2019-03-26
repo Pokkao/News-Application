@@ -14,6 +14,8 @@ application for news | แอปพลิเคชัน สำหรับอ�
     - RecyclerView
     - Manage Layout(LinearLayout, RelativeLayout, FrameLayout)
     - Send data between Activity to Fragment
+    - Pattern MVC
 
 3. Coming Soon 
-    - Pattern MVC
+    - Edit Layout 
+    - Edit buttom star
