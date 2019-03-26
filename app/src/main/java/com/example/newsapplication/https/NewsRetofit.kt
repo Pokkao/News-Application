@@ -1,13 +1,9 @@
-package com.example.newsapplication
+package com.example.newsapplication.https
 
 
-import com.example.newsapplication.ModelItem.ResponseNews
+import com.example.newsapplication.model.ResponseNews
 import retrofit2.Call
 import retrofit2.http.GET
-import retrofit2.http.Query
-import com.example.newsapplication.ModelTest.EmployeeList
-
-
 
 
 interface NewsRetofit {

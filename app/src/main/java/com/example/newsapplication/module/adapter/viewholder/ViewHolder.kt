@@ -1,12 +1,13 @@
-package com.example.newsapplication
+package com.example.newsapplication.module.adapter.viewholder
 
 import android.support.v7.widget.RecyclerView
-import android.util.Log
 import android.view.View
 import com.bumptech.glide.Glide
-import com.example.newsapplication.ModelItem.ArticlesItem
+import com.example.newsapplication.R
+import com.example.newsapplication.model.ArticlesItem
+import com.example.newsapplication.module.activity.MainActivity
+import com.example.newsapplication.module.fragment.PageNewsFragment
 import kotlinx.android.synthetic.main.main_recycleview.view.*
-import android.util.SparseBooleanArray
 
 class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
@@ -47,6 +48,7 @@ class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
                 bt_ic_starborder.isSelected = true
                 bt_ic_starborder.setImageResource(R.drawable.ic_check_star)
 //                listCurrentSelect.add(data)
+
             }
             else{
 //                sparseBooleanArray!!.put(adapterPosition,false)

@@ -3,14 +3,33 @@
              xmlns:tools="http://schemas.android.com/tools"
              android:layout_width="match_parent"
              android:layout_height="match_parent"
-             tools:context=".PageNewsFragment">
+             tools:context=".module.fragment.PageNewsFragment">
 
-    <android.support.v7.widget.RecyclerView
-            android:id="@+id/recycler_view"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@color/colorGray">
-    </android.support.v7.widget.RecyclerView>
+    <RelativeLayout android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+    android:background="@color/calendar_current_selected_day_background_color">
+
+
+            <TextView
+                      android:id="@+id/tv_all_news"
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:text="All News"
+                      android:textStyle="bold"
+                      android:textSize="15dp"
+                      android:textColor="@color/colorWhite"
+                      android:layout_marginLeft="10dp"
+                      android:layout_marginTop="5dp"
+                      android:layout_marginBottom="2dp"/>
+
+            <android.support.v7.widget.RecyclerView
+                    android:id="@+id/recycler_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/colorGray"
+                    android:layout_below="@id/tv_all_news">
+            </android.support.v7.widget.RecyclerView>
+    </RelativeLayout>
 
     <FrameLayout
             android:id="@+id/fragment_profile_news"
