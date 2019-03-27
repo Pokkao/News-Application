@@ -24,7 +24,7 @@
 
                     <ImageView
                                android:id="@+id/im_page_topic"
-                               android:layout_width="390dp"
+                               android:layout_width="400dp"
                                android:layout_height="210dp"
                                android:background="@color/colorGray"
                                android:scaleType="fitXY"/>

@@ -7,28 +7,41 @@
 
     <RelativeLayout android:layout_width="match_parent"
                     android:layout_height="match_parent"
-    android:background="@color/white_opacity80">
+                    android:background="@color/white_opacity80">
 
 
-            <TextView
-                      android:id="@+id/tv_all_news"
-                      android:layout_width="wrap_content"
-                      android:layout_height="wrap_content"
-                      android:text="All News"
-                      android:textStyle="bold"
-                      android:textSize="15dp"
-                      android:textColor="@color/black_opacity05"
-                      android:layout_marginLeft="10dp"
-                      android:layout_marginTop="7dp"
-                      android:layout_marginBottom="2dp"/>
+        <TextView
+                android:id="@+id/tv_all_news"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="All News"
+                android:textStyle="bold"
+                android:textSize="15dp"
+                android:textColor="@color/black_opacity05"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="7dp"
+                android:layout_marginBottom="2dp"/>
 
-            <android.support.v7.widget.RecyclerView
-                    android:id="@+id/recycler_view"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@color/colorGray"
-                    android:layout_below="@id/tv_all_news">
-            </android.support.v7.widget.RecyclerView>
+        <android.support.v7.widget.RecyclerView
+                android:id="@+id/recycler_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/colorGray"
+                android:layout_below="@id/tv_all_news">
+        </android.support.v7.widget.RecyclerView>
+
+
+    </RelativeLayout>
+
+    <RelativeLayout android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+        <ProgressBar
+                android:id="@+id/pg_load_json"
+                android:visibility="visible"
+                android:layout_width="90dp"
+                android:layout_height="90dp"
+                android:layout_centerInParent="true"
+                android:theme="@style/AppTheme.colorPrimaryDark"/>
     </RelativeLayout>
 
     <FrameLayout

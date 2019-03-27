@@ -1,5 +1,11 @@
 package com.example.newsapplication.module.fragment
 
+
+import android.annotation.TargetApi
+import android.content.res.ColorStateList
+import android.graphics.Color
+import android.graphics.PorterDuff
+import android.os.Build
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.widget.LinearLayoutManager
@@ -21,6 +27,13 @@ import com.example.newsapplication.module.adapter.AdapterRecycle
 import com.example.newsapplication.R
 import com.example.newsapplication.https.NewsRetofit
 import com.example.newsapplication.module.activity.MainActivity
+import android.util.Log
+import android.graphics.drawable.Drawable
+
+
+
+
+
 
 
 class PageNewsFragment : Fragment() {
@@ -42,6 +55,7 @@ class PageNewsFragment : Fragment() {
 
     }
 
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_page_news, container, false)
     }
@@ -55,30 +69,46 @@ class PageNewsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         loadJson()
+
+
     }
 
+
     private fun loadJson() {
-        val retrofit = Retrofit.Builder()
-            .baseUrl("https://newsapi.org/v2/")
-            .addConverterFactory(GsonConverterFactory.create())
-            .build()
 
+        object : Thread() {
+            override fun run() {
+                try {
+                    Thread.sleep(1500)
+                    val retrofit = Retrofit.Builder()
+                        .baseUrl("https://newsapi.org/v2/")
+                        .addConverterFactory(GsonConverterFactory.create())
+                        .build()
 
-        val request = retrofit.create(NewsRetofit::class.java)
-        val call = request.getJSON()
-//        Log.d("URLCalled", ""+call.request().url())
+                    val request = retrofit.create(NewsRetofit::class.java)
+                    val call = request.getJSON()
 
+                    call.enqueue(object : Callback<ResponseNews> {
+                        override fun onResponse(call: Call<ResponseNews>, response: Response<ResponseNews>) {
+//                          val jsonResponse = response.body()?.getEmployeeArrayList()
+                            initView(response.body()?.getNewsArrayList(),activityMain,Pagefm)  //articles
 
-        call.enqueue(object : Callback<ResponseNews> {
-            override fun onResponse(call: Call<ResponseNews>, response: Response<ResponseNews>) {
-//                val jsonResponse = response.body()?.getEmployeeArrayList()
-                initView(response.body()?.getNewsArrayList(),activityMain,Pagefm)  //articles
+                            pg_load_json.visibility = View.INVISIBLE
+
+                        }
+
+                        override fun onFailure(call: Call<ResponseNews>, t: Throwable) {
+                            Toast.makeText(activityMain, "Something went wrong...Please try later!", Toast.LENGTH_SHORT).show()
+                        }
+                    })
+
+                } catch (e: Exception) {
+                    Log.e("tags", e.message)
+                }
+
             }
+        }.start()
 
-            override fun onFailure(call: Call<ResponseNews>, t: Throwable) {
-                Toast.makeText(activityMain, "Something went wrong...Please try later!", Toast.LENGTH_SHORT).show()
-            }
-        })
 
     }
 
@@ -94,6 +124,7 @@ class PageNewsFragment : Fragment() {
             AdapterRecycle(NewsArrayList, activityMain, pagenew)
 
     }
+
 
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
@@ -116,9 +147,6 @@ class PageNewsFragment : Fragment() {
             recycler_view.itemAnimator = null;
         }
     }
-
-
-
 
     companion object {
         fun newInstance(): PageNewsFragment {
