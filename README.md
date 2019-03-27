@@ -8,8 +8,9 @@ application for news | แอปพลิเคชัน สำหรับอ�
 2. Application ประกอบไปด้วย
     - Activity & Fragment
     - Lifecycle
-    - Add a toolbar
     - Splash
+    - Add a toolbar
+    - ProgressBar
     - RestFul(retrofit)
     - RecyclerView
     - Manage Layout(LinearLayout, RelativeLayout, FrameLayout)
