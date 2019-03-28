@@ -11,6 +11,7 @@ application for news | แอปพลิเคชัน สำหรับอ�
     - Splash
     - Add a toolbar
     - ProgressBar
+    - Navigation Drawer
     - RestFul(retrofit)
     - RecyclerView
     - Manage Layout(LinearLayout, RelativeLayout, FrameLayout)
@@ -18,5 +19,4 @@ application for news | แอปพลิเคชัน สำหรับอ�
     - Pattern MVC
 
 3. Coming Soon 
-    - Navigation Drawer
     - Edit buttom star
