@@ -8,7 +8,8 @@
             android:id="@+id/action_favorite"
             android:orderInCategory="300"
             android:title="User"
-            android:icon="@drawable/ic_kotlin"
+            android:icon="@drawable/ic_brightness_medium_black"
             app:showAsAction="ifRoom"/>
+
 
 </menu>
