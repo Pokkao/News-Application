@@ -79,7 +79,7 @@ class PageNewsFragment : Fragment() {
         object : Thread() {
             override fun run() {
                 try {
-                    Thread.sleep(1500)
+                    Thread.sleep(1000)
                     val retrofit = Retrofit.Builder()
                         .baseUrl("https://newsapi.org/v2/")
                         .addConverterFactory(GsonConverterFactory.create())

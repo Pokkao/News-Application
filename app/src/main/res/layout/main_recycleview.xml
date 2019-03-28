@@ -4,7 +4,7 @@
                 android:layout_width="match_parent"
                   android:layout_height="wrap_content"
                   android:orientation="vertical"
-                  android:background="@color/white_opacity80">
+                  android:background="@color/line_color_university">
 
         <LinearLayout
                 android:id="@+id/rv_item_news"
@@ -12,10 +12,10 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:background="@drawable/layout_bg_corner"
-                android:layout_marginLeft="3dp"
-                android:layout_marginTop="3dp"
-                android:layout_marginRight="3dp"
-                android:layout_marginBottom="2dp">
+                android:layout_marginLeft="6.5dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginRight="6.5dp"
+                android:layout_marginBottom="4dp">
 
             <ImageView
                        android:id="@+id/Image_topic"

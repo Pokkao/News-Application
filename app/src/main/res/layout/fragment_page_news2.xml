@@ -8,13 +8,17 @@
              android:clickable="true"
              android:focusable="true">
 
-    <ScrollView android:layout_width="fill_parent"
+    <ScrollView
+            android:id="@+id/layout_page_news"
+            android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
                 android:scrollbars="none">
 
 
 
-    <LinearLayout android:layout_width="match_parent"
+    <LinearLayout
+
+                  android:layout_width="match_parent"
                   android:layout_height="wrap_content"
                   android:orientation="vertical">
 
@@ -24,7 +28,7 @@
 
                     <ImageView
                                android:id="@+id/im_page_topic"
-                               android:layout_width="400dp"
+                               android:layout_width="wrap_content"
                                android:layout_height="210dp"
                                android:background="@color/colorGray"
                                android:scaleType="fitXY"/>
@@ -40,7 +44,9 @@
                             android:focusable="true"/>
                 </RelativeLayout>
 
-            <RelativeLayout android:layout_width="wrap_content"
+            <RelativeLayout
+                            android:id="@+id/tv_author_date"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content">
 
                 <TextView

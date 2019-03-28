@@ -63,7 +63,13 @@ class PageNews : Fragment() {
         setView()
         initListener(url)
         initListenerBack()
+        initListenerModeNight()
 
+
+    }
+
+    private fun initListenerModeNight() {
+        activityMain!!.ChangeMode(true)
     }
 
     private fun initListenerBack() {
@@ -77,10 +83,13 @@ class PageNews : Fragment() {
     override fun onDestroy() {
         super.onDestroy()
         activityMain!!.setupTitle()
+        activityMain?.ModeOption(false)
     }
 
     private fun settitlebar(title: String?) {
         activityMain!!.setupTitleName(title)
+        activityMain!!.ModeOption(true)
+        activityMain!!.ChangeMode(false)
     }
 
     private fun initListener(url: String?) {

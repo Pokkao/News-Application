@@ -3,13 +3,13 @@
       xmlns:app="http://schemas.android.com/apk/res-auto"
       xmlns:tools="http://schemas.android.com/tools"
       tools:context=".module.activity.MainActivity">
-
-    <item
-            android:id="@+id/action_favorite"
-            android:orderInCategory="300"
-            android:title="User"
-            android:icon="@drawable/ic_brightness_medium_black"
-            app:showAsAction="ifRoom"/>
-
+    <group>
+        <item
+                android:id="@+id/action_favorite"
+                android:orderInCategory="300"
+                android:title="User"
+                android:icon="@drawable/ic_brightness_medium_black"
+                app:showAsAction="ifRoom"/>
+    </group>
 
 </menu>

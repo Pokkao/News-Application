@@ -42,6 +42,7 @@ class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
             }
 
 
+
             bt_ic_starborder.setOnClickListener{
             if(!bt_ic_starborder.isSelected){
 //                sparseBooleanArray!!.put(adapterPosition,true)

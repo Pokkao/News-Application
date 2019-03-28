@@ -1,31 +1,29 @@
 package com.example.newsapplication.module.activity
 
 
-import android.app.PendingIntent.getActivity
+import android.graphics.Color
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Parcelable
 import android.support.annotation.NonNull
 import android.support.design.widget.NavigationView
 import android.support.v4.view.GravityCompat
-import android.support.v4.widget.DrawerLayout
 import android.util.Log
 import kotlinx.android.synthetic.main.activity_main.*
-import android.view.Menu
 import android.view.MenuItem
-import android.widget.Toast
-import com.example.newsapplication.module.fragment.PageNewsFragment
+import android.view.View
 import com.example.newsapplication.R
+import com.example.newsapplication.module.fragment.PageNewsFragment
 import com.example.newsapplication.module.fragment.PageNews
 import kotlinx.android.synthetic.main.fragment_page_news.*
+import kotlinx.android.synthetic.main.fragment_page_news2.*
 
 
 class MainActivity : AppCompatActivity(),NavigationView.OnNavigationItemSelectedListener {
 
     var recyclerViewState: Parcelable? = null
-
-
     private val TAG = "MainActivity"
+    var a = true
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,10 +33,12 @@ class MainActivity : AppCompatActivity(),NavigationView.OnNavigationItemSelected
         ProfileNews()
         clickoptionBar()
 
+
     }
 
     private fun setNavigation() {
         nav_view!!.setNavigationItemSelectedListener(this@MainActivity)
+        nav_view.setBackgroundResource(R.color.line_color_university)
     }
 
     private fun clickoptionBar() {
@@ -52,6 +52,7 @@ class MainActivity : AppCompatActivity(),NavigationView.OnNavigationItemSelected
         setSupportActionBar(my_toolbar)
 //        supportActionBar!!.setDisplayHomeAsUpEnabled(true)  //arrow
         supportActionBar!!.setDisplayShowTitleEnabled(false)
+
     }
 
     fun setupTitleName(title: String?) {
@@ -62,25 +63,56 @@ class MainActivity : AppCompatActivity(),NavigationView.OnNavigationItemSelected
         tv_toolbar.text = "News Application"
     }
 
-
-    override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        menuInflater.inflate(R.menu.menu_main, menu)
-        nav_view.setBackgroundResource(R.color.line_color_university)
-        return true
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        val id = item.itemId
-        if (id == R.id.action_favorite) {
-
-//            **drawer_layout.openDrawer(GravityCompat.START)
-//            Toast.makeText(this@MainActivity, "Thank you for Click! :)", Toast.LENGTH_LONG).show()
-            return true
+    fun ModeOption(b: Boolean) {
+        if(b){
+            bt_option_night_mode.visibility = View.VISIBLE
+        }else{
+            bt_option_night_mode.visibility = View.INVISIBLE
         }
-
-        return super.onOptionsItemSelected(item)
     }
+
+    fun ChangeMode(b: Boolean) {
+
+                bt_option_night_mode.setOnClickListener {
+                    if(b&&a){
+                        layout_page_news.setBackgroundResource(R.color.black_opacity50)
+                        im_page_topic.alpha = 0.5F
+//                        tv_content.setTextColor(Color.parseColor("#72000000"));
+                        a = false
+                    }else {
+                        layout_page_news.setBackgroundResource(R.color.tab_selected_dialog)
+                        im_page_topic.alpha = 1F
+//                        tv_content.setTextColor(Color.parseColor("#CC000000"));
+                        a = true
+                    }
+
+        }
+    }
+
+
+//    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+//        // Inflate the menu; this adds items to the action bar if it is present.
+//        this.menu = menu
+//        menuInflater.inflate(R.menu.menu_main, menu)
+//        nav_view.setBackgroundResource(R.color.line_color_university)
+//
+//
+//
+//        return true
+//    }
+
+//    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+//        val id = item.itemId
+//        if (id == R.id.action_favorite) {
+//
+////            **drawer_layout.openDrawer(GravityCompat.START)
+////            Toast.makeText(this@MainActivity, "Thank you for Click! :)", Toast.LENGTH_LONG).show()
+//            return true
+//        }
+//
+//        return super.onOptionsItemSelected(item)
+//    }
+
 
     override fun onNavigationItemSelected(@NonNull item: MenuItem): Boolean {
         item.isChecked = true
