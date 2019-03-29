@@ -69,7 +69,7 @@ class PageNews : Fragment() {
     }
 
     private fun initListenerModeNight() {
-        activityMain!!.ChangeMode(true)
+        activityMain!!.ChangeMode()
     }
 
     private fun initListenerBack() {
@@ -89,7 +89,7 @@ class PageNews : Fragment() {
     private fun settitlebar(title: String?) {
         activityMain!!.setupTitleName(title)
         activityMain!!.ModeOption(true)
-        activityMain!!.ChangeMode(false)
+        activityMain!!.ChangeMode()
     }
 
     private fun initListener(url: String?) {

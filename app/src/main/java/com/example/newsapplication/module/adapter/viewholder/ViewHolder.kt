@@ -2,6 +2,7 @@ package com.example.newsapplication.module.adapter.viewholder
 
 import android.support.v7.widget.RecyclerView
 import android.view.View
+import android.widget.Toast
 import com.bumptech.glide.Glide
 import com.example.newsapplication.R
 import com.example.newsapplication.model.ArticlesItem
@@ -35,15 +36,22 @@ class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
             Image_topic.setOnClickListener {
                 val integer = Integer.valueOf(position)
 //                Log.i("Profile","$integer")
+                if(item.content != null) {
+                    mainActivity.ProfileNews(
+                        integer, item.title!!, item.urlToImage!!, item.author!!,
+                        item.content!!, item.publishedAt!!, item.url!!, item.description!!
+                    )
+                }else {
+                    Toast.makeText(context, "Something went wrong...Please try later!", Toast.LENGTH_SHORT).show()
 
-                mainActivity.ProfileNews(integer, item.title!!, item.urlToImage!!, item.author!!,
-                    item.content!!,item.publishedAt!!,item.url!!,item.description!!)
+                }
 
             }
 
 
 
             bt_ic_starborder.setOnClickListener{
+
             if(!bt_ic_starborder.isSelected){
 //                sparseBooleanArray!!.put(adapterPosition,true)
 

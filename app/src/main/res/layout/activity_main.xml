@@ -34,7 +34,7 @@
 
                                 <TextView
                                           android:id="@+id/tv_toolbar"
-                                          android:layout_width="247dp"
+                                          android:layout_width="280dp"
                                           android:layout_height="wrap_content"
                                           android:layout_toRightOf="@id/bt_option_menu"
                                           android:text="@string/app_main"
@@ -51,7 +51,7 @@
                                         android:layout_alignParentRight="true"
                                         android:layout_marginRight="15dp"
                                         android:layout_marginTop="3dp"
-                                        android:src="@drawable/ic_brightness_medium_black"
+                                        android:src="@drawable/im_bg_light"
                                         android:clickable="true"
                                         android:visibility="invisible"/>
                         </RelativeLayout>

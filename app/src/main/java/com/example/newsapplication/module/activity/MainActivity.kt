@@ -71,19 +71,19 @@ class MainActivity : AppCompatActivity(),NavigationView.OnNavigationItemSelected
         }
     }
 
-    fun ChangeMode(b: Boolean) {
+    fun ChangeMode() {
 
                 bt_option_night_mode.setOnClickListener {
-                    if(b&&a){
+                    if(!bt_option_night_mode.isSelected){
                         layout_page_news.setBackgroundResource(R.color.black_opacity50)
                         im_page_topic.alpha = 0.5F
 //                        tv_content.setTextColor(Color.parseColor("#72000000"));
-                        a = false
+                        bt_option_night_mode.isSelected = true
                     }else {
                         layout_page_news.setBackgroundResource(R.color.tab_selected_dialog)
                         im_page_topic.alpha = 1F
 //                        tv_content.setTextColor(Color.parseColor("#CC000000"));
-                        a = true
+                        bt_option_night_mode.isSelected = false
                     }
 
         }

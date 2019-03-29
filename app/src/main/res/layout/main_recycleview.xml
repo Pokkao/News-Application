@@ -12,17 +12,17 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:background="@drawable/layout_bg_corner"
-                android:layout_marginLeft="6.5dp"
+                android:layout_marginLeft="7dp"
                 android:layout_marginTop="4dp"
-                android:layout_marginRight="6.5dp"
+                android:layout_marginRight="7dp"
                 android:layout_marginBottom="4dp">
 
             <ImageView
                        android:id="@+id/Image_topic"
-                       android:layout_width="wrap_content"
-                       android:layout_height="180dp"
+                       android:layout_width="350dp"
+                       android:layout_height="wrap_content"
                        android:layout_gravity="center"
-                       android:layout_marginTop="10dp"
+                       android:layout_marginTop="14dp"
                        android:background="@color/colorGray"/>
 
         <RelativeLayout android:layout_width="wrap_content"
@@ -55,10 +55,11 @@
             <View
                     android:id="@+id/lines1"
                     android:layout_width="320dp"
-                  android:layout_height="1dp"
-                  android:layout_marginLeft="14dp"
-                  android:layout_alignBottom="@id/text_topic"
-                  android:background="@color/colorBlack"
+                    android:layout_height="1dp"
+                    android:layout_marginLeft="14dp"
+                    android:layout_marginTop="2dp"
+                    android:layout_below="@id/text_topic"
+                    android:background="@color/colorBlack"
                     android:layout_toLeftOf="@id/bt_ic_starborder">
             </View>
 

@@ -28,8 +28,8 @@
 
                     <ImageView
                                android:id="@+id/im_page_topic"
-                               android:layout_width="wrap_content"
-                               android:layout_height="210dp"
+                               android:layout_width="match_parent"
+                               android:layout_height="230dp"
                                android:background="@color/colorGray"
                                android:scaleType="fitXY"/>
 
@@ -115,7 +115,7 @@
                         android:paddingBottom="5dp"
                         android:layout_marginRight="10dp"
                         android:text="HI I'm Pokkao"
-                        android:textSize="19dp"
+                        android:textSize="21dp"
                         android:textStyle="normal"
                         android:textColor="@color/colorBlack"/>
 
@@ -125,7 +125,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_below="@id/text_page_topic"
-                        android:layout_marginTop="5dp"
+                        android:layout_marginTop="12dp"
                         android:layout_marginLeft="10dp"
                         android:textSize="14dp"
                         android:text="DESCRIPTION "
@@ -140,14 +140,14 @@
                         android:text="context"
                         android:layout_below="@id/tv_description"
                         android:layout_marginRight="8dp"
-                        android:padding="4dp"/>
+                        android:padding="5dp"/>
 
                 <TextView
                         android:id="@+id/tx_content"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_below="@id/tv_page_desc"
-                        android:layout_marginTop="5dp"
+                        android:layout_marginTop="10dp"
                         android:layout_marginLeft="10dp"
                         android:textSize="14dp"
                         android:textStyle="bold"
@@ -158,7 +158,7 @@
                         android:id="@+id/tv_content"
                         android:layout_width="370dp"
                         android:layout_height="wrap_content"
-                        android:padding="4dp"
+                        android:padding="5dp"
                         android:layout_below="@id/tx_content"
                         android:layout_marginLeft="10dp"
                         android:layout_marginRight="8dp"
@@ -171,7 +171,7 @@
                         android:layout_height="1dp"
                         android:layout_marginRight="10dp"
                         android:layout_marginLeft="10dp"
-                        android:layout_marginTop="5dp"
+                        android:layout_marginTop="8dp"
                         android:layout_below="@id/tv_content"
                         android:background="@color/colorBlack"/>
 
@@ -180,6 +180,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_below="@id/line4"
+                        android:layout_marginTop="5dp"
                         android:text="Click Link to read more.. "
                         android:textStyle="bold"
                         android:layout_marginLeft="10dp" />
