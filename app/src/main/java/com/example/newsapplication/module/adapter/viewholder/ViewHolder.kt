@@ -1,6 +1,7 @@
 package com.example.newsapplication.module.adapter.viewholder
 
 import android.support.v7.widget.RecyclerView
+import android.util.SparseBooleanArray
 import android.view.View
 import android.widget.Toast
 import com.bumptech.glide.Glide
@@ -8,8 +9,8 @@ import com.example.newsapplication.R
 import com.example.newsapplication.model.ArticlesItem
 import com.example.newsapplication.module.activity.MainActivity
 import com.example.newsapplication.module.fragment.PageNewsFragment
-import kotlinx.android.synthetic.main.fragment_page_news2.view.*
 import kotlinx.android.synthetic.main.main_recycleview.view.*
+
 
 class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
@@ -19,10 +20,12 @@ class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 //            this.a = a
     }
 
+
     fun bind(
         item: ArticlesItem,
         pages: PageNewsFragment?,
-        mainActivity: MainActivity
+        mainActivity: MainActivity,
+        selected: SparseBooleanArray?
     ) {
 
         with(itemView){
@@ -31,6 +34,8 @@ class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
             text_sub_content.text = item.description
             Glide.with(context).load(item.urlToImage).into(Image_topic)
             Realtime_date.text = item.publishedAt
+
+            bt_ic_starborder.isSelected = item.isChecked
 
 
             Image_topic.setOnClickListener {
@@ -49,25 +54,49 @@ class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
             }
 
 
+//            selected!!.get(adapterPosition, false)
 
-            bt_ic_starborder.setOnClickListener{
-
-            if(!bt_ic_starborder.isSelected){
-//                sparseBooleanArray!!.put(adapterPosition,true)
-
-                itemView.tag = item
+            if (selected!!.get(adapterPosition, false)) {
                 bt_ic_starborder.isSelected = true
+                selected.put(adapterPosition,true)
                 bt_ic_starborder.setImageResource(R.drawable.ic_check_star)
-//                listCurrentSelect.add(data)
-
-            }
-            else{
-//                sparseBooleanArray!!.put(adapterPosition,false)
-
+            }else{
+                selected.put(adapterPosition,false)
                 bt_ic_starborder.isSelected = false
                 bt_ic_starborder.setImageResource(R.drawable.ic_check_starborder)
-//                listCurrentSelect.add(data)
             }
+
+
+            bt_ic_starborder.setOnClickListener{
+//                selected!!.get(adapterPosition, false)
+
+                    if (!bt_ic_starborder.isSelected) {
+//                                        sparseBooleanArray!!.put(adapterPosition,true)
+//                        bt_ic_starborder.isSelected = false
+                        selected.put(adapterPosition,true)
+
+
+                        item.isChecked = true
+//                        itemView.tag = item
+                        bt_ic_starborder.isSelected = true
+
+                        bt_ic_starborder.setImageResource(R.drawable.ic_check_star)
+                        //                listCurrentSelect.add(data)
+
+                    } else {
+                        //                sparseBooleanArray!!.put(adapterPosition,false)
+//                        selected.put(adapterPosition,true)
+                        selected.delete(adapterPosition)
+
+
+
+                        item.isChecked = false
+                        bt_ic_starborder.isSelected = false
+                        bt_ic_starborder.setImageResource(R.drawable.ic_check_starborder)
+                        //                listCurrentSelect.add(data)
+
+                    }
+
 
 
 //            Toast.makeText(context,

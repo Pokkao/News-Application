@@ -29,6 +29,9 @@ class ArticlesItem {
     @SerializedName("content")
     var content: String? = null
 
+    var isChecked: Boolean = false
+
+
     override fun toString(): String {
         return "ArticlesItem{" +
                 "publishedAt = '" + publishedAt + '\''.toString() +
