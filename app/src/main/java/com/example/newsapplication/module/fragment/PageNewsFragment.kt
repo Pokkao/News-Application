@@ -1,11 +1,6 @@
 package com.example.newsapplication.module.fragment
 
 
-import android.annotation.TargetApi
-import android.content.res.ColorStateList
-import android.graphics.Color
-import android.graphics.PorterDuff
-import android.os.Build
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.widget.LinearLayoutManager
@@ -28,12 +23,6 @@ import com.example.newsapplication.R
 import com.example.newsapplication.https.NewsRetofit
 import com.example.newsapplication.module.activity.MainActivity
 import android.util.Log
-import android.graphics.drawable.Drawable
-
-
-
-
-
 
 
 class PageNewsFragment : Fragment() {
@@ -43,7 +32,9 @@ class PageNewsFragment : Fragment() {
     lateinit var activityMain: MainActivity
     private var myContext: FragmentActivity? = null
     var recyclerViewState: Parcelable? = null
+    var listCurrentSelect: ArrayList<ArticlesItem>? = null
 
+    private var myFavoritePage :myfavoriteFragment? = null
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -68,9 +59,14 @@ class PageNewsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        setupTitle()
         loadJson()
 
 
+    }
+
+    private fun setupTitle() {
+        activityMain.setupTitle("News Application")
     }
 
 
@@ -144,7 +140,7 @@ class PageNewsFragment : Fragment() {
         if (savedInstanceState != null) {
             // Restore last state for checked position.
 //            mCurCheckPosition = savedInstanceState.getInt("curChoice", 0)
-            recycler_view.itemAnimator = null;
+            recycler_view.itemAnimator = null
         }
     }
 
