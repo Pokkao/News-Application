@@ -82,7 +82,7 @@ class PageNews : Fragment() {
 
     override fun onDestroy() {
         super.onDestroy()
-        activityMain!!.setupTitle()
+        activityMain!!.setupTitle("News Application")
         activityMain?.ModeOption(false)
     }
 
