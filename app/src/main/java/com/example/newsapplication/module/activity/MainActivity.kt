@@ -1,7 +1,6 @@
 package com.example.newsapplication.module.activity
 
 
-import android.graphics.Color
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Parcelable
@@ -23,7 +22,7 @@ class MainActivity : AppCompatActivity(),NavigationView.OnNavigationItemSelected
 
     var recyclerViewState: Parcelable? = null
     private val TAG = "MainActivity"
-    var a = true
+    private var viewIsAtHome: Boolean = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,7 +31,6 @@ class MainActivity : AppCompatActivity(),NavigationView.OnNavigationItemSelected
         setNavigation()
         ProfileNews()
         clickoptionBar()
-
 
     }
 
@@ -59,9 +57,10 @@ class MainActivity : AppCompatActivity(),NavigationView.OnNavigationItemSelected
         tv_toolbar.text = "$title"
     }
 
-    fun setupTitle() {
-        tv_toolbar.text = "News Application"
+    fun setupTitle(title: String) {
+        tv_toolbar.text = "$title"
     }
+
 
     fun ModeOption(b: Boolean) {
         if(b){
@@ -116,14 +115,23 @@ class MainActivity : AppCompatActivity(),NavigationView.OnNavigationItemSelected
 
     override fun onNavigationItemSelected(@NonNull item: MenuItem): Boolean {
         item.isChecked = true
-
+//        drawer_layout.closeDrawer(GravityCompat.START)
         when (item.itemId) {
-            R.id.menu_my_favorite -> Log.d(TAG, "onNavigationItemSelected: " + item.title)
-            R.id.menu_my_other -> Log.d(TAG, "onNavigationItemSelected: " + item.title)
-            R.id.menu_my_setting -> Log.d(TAG, "onNavigationItemSelected: " + item.title)
 
+            R.id.menu_list_news ->{
+                ProfileNews()
+            }
+            R.id.menu_my_favorite -> {
+//                Log.d(TAG, "listCurrentSelect: $listCurrentSelect")
+//                Myfavorite(listCurrentSelect)
+                    Log.d(TAG, "onNavigationItemSelected: " + item.title)}
+            R.id.menu_my_other -> {
+                    Log.d(TAG, "onNavigationItemSelected: " + item.title)}
+            R.id.menu_my_setting -> {
+                    Log.d(TAG, "onNavigationItemSelected: " + item.title)
+            }
         }
-        drawer_layout.closeDrawers()
+        drawer_layout.closeDrawer(GravityCompat.START)
         return true
     }
 
@@ -132,9 +140,18 @@ class MainActivity : AppCompatActivity(),NavigationView.OnNavigationItemSelected
         val fragment = PageNewsFragment()
             supportFragmentManager.beginTransaction()
                 .replace(R.id.fragment_page_news, fragment)
-                .commit()
+                .commitAllowingStateLoss()
     }
 
+    override fun onBackPressed() {
+
+        if (drawer_layout.isDrawerOpen(GravityCompat.START)) {
+            drawer_layout.closeDrawer(GravityCompat.START)
+        }
+        else{
+            super.onBackPressed()
+        }
+    }
 
     fun ProfileNews(position: Int, title: String, urlToImage: String, author: String, content: String, publishedAt: String, url: String, desc: String) {
         val fragment = PageNews

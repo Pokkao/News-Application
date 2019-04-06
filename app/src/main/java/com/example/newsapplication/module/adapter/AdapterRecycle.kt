@@ -8,19 +8,18 @@ import com.example.newsapplication.R
 import com.example.newsapplication.module.adapter.viewholder.ViewHolder
 import com.example.newsapplication.model.ArticlesItem
 import com.example.newsapplication.module.activity.MainActivity
-import com.example.newsapplication.module.fragment.PageNewsFragment
 import android.util.SparseBooleanArray
+import com.example.newsapplication.module.fragment.PageNewsFragment
 import kotlinx.android.synthetic.main.main_recycleview.view.*
 
 
 class AdapterRecycle(
     private val item: ArrayList<ArticlesItem>?,
     val activityMain: MainActivity,
-    val pages: PageNewsFragment?
+    val pagenew: PageNewsFragment?
 ) : RecyclerView.Adapter<ViewHolder>() {
 
     var selectedItems = SparseBooleanArray()
-
 
 
     override fun onCreateViewHolder(parent: ViewGroup, i: Int): ViewHolder {
@@ -37,7 +36,7 @@ class AdapterRecycle(
 //        selectedItems.get(position,false)
          holder.itemView.bt_ic_starborder.isSelected = selectedItems.get(position,false)
 
-         holder.bind(item!![position],pages,activityMain,selectedItems)
+         holder.bind(item!![position],pagenew,activityMain,selectedItems)
 
     }
 
@@ -45,5 +44,13 @@ class AdapterRecycle(
         return item!!.size
     }
 
+
+    fun remove(position: Int){
+
+        item!!.removeAt(position)
+        notifyItemRemoved(position)
+        notifyItemRangeChanged(position, itemCount)
+
+    }
 
 }
