@@ -1,6 +1,7 @@
 package com.example.newsapplication.module.adapter.viewholder
 
 import android.support.v7.widget.RecyclerView
+import android.util.Log
 import android.util.SparseBooleanArray
 import android.view.View
 import android.widget.Toast
@@ -8,12 +9,11 @@ import com.bumptech.glide.Glide
 import com.example.newsapplication.R
 import com.example.newsapplication.model.ArticlesItem
 import com.example.newsapplication.module.activity.MainActivity
-import com.example.newsapplication.module.fragment.PageNewsFragment
 import kotlinx.android.synthetic.main.main_recycleview.view.*
-
 
 class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
+    var arrayList: ArrayList<ArticlesItem> = arrayListOf()
 
     init {
 //Ex1        this.context = context
@@ -23,9 +23,10 @@ class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
     fun bind(
         item: ArticlesItem,
-        pages: PageNewsFragment?,
+        pages: String?,
         mainActivity: MainActivity,
-        selected: SparseBooleanArray?
+        selected: SparseBooleanArray?,
+        callBack: (ArticlesItem) -> Unit
     ) {
 
         with(itemView){
@@ -37,6 +38,7 @@ class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
             bt_ic_starborder.isSelected = item.isChecked
 
+//            Log.d("ListArrayNoinBtn","${arrayList.size}")
 
             Image_topic.setOnClickListener {
                 val integer = Integer.valueOf(position)
@@ -82,6 +84,11 @@ class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
                         bt_ic_starborder.setImageResource(R.drawable.ic_check_star)
                         //                listCurrentSelect.add(data)
+
+//                        arrayList.add(item)
+//                        Log.d("ListArray","${arrayList.size}")
+
+                        callBack.invoke(item)
 
                     } else {
                         //                sparseBooleanArray!!.put(adapterPosition,false)

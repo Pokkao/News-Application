@@ -11,12 +11,13 @@ import android.util.Log
 import kotlinx.android.synthetic.main.activity_main.*
 import android.view.MenuItem
 import android.view.View
+import android.widget.Toast
 import com.example.newsapplication.R
 import com.example.newsapplication.module.fragment.PageNewsFragment
 import com.example.newsapplication.module.fragment.PageNews
+import com.example.newsapplication.module.fragment.myfavoriteFragment
 import kotlinx.android.synthetic.main.fragment_page_news.*
 import kotlinx.android.synthetic.main.fragment_page_news2.*
-
 
 class MainActivity : AppCompatActivity(),NavigationView.OnNavigationItemSelectedListener {
 
@@ -122,12 +123,15 @@ class MainActivity : AppCompatActivity(),NavigationView.OnNavigationItemSelected
                 ProfileNews()
             }
             R.id.menu_my_favorite -> {
+                myFavrite()
 //                Log.d(TAG, "listCurrentSelect: $listCurrentSelect")
 //                Myfavorite(listCurrentSelect)
                     Log.d(TAG, "onNavigationItemSelected: " + item.title)}
             R.id.menu_my_other -> {
+                Toast.makeText(this@MainActivity, "Coming Soon!!", Toast.LENGTH_SHORT).show()
                     Log.d(TAG, "onNavigationItemSelected: " + item.title)}
             R.id.menu_my_setting -> {
+                Toast.makeText(this@MainActivity, "Coming Soon!!", Toast.LENGTH_SHORT).show()
                     Log.d(TAG, "onNavigationItemSelected: " + item.title)
             }
         }
@@ -143,13 +147,33 @@ class MainActivity : AppCompatActivity(),NavigationView.OnNavigationItemSelected
                 .commitAllowingStateLoss()
     }
 
+    private fun ProfileNewsTWO() {
+        val fragment = PageNewsFragment()
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.fragment_page_news, fragment)
+            .addToBackStack(null)
+            .commitAllowingStateLoss()
+    }
+
+    private fun myFavrite() {
+        val fragment = myfavoriteFragment()
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.fragment_page_news, fragment)
+            .addToBackStack(null)
+            .commitAllowingStateLoss()
+    }
+
     override fun onBackPressed() {
 
         if (drawer_layout.isDrawerOpen(GravityCompat.START)) {
             drawer_layout.closeDrawer(GravityCompat.START)
+            Log.d("AAAAA","mainA")
         }
         else{
+
             super.onBackPressed()
+//            drawer_layout.closeDrawer(GravityCompat.START)
+            Log.d("BBBBB","mainB")
         }
     }
 

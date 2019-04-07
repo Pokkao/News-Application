@@ -9,14 +9,14 @@ import com.example.newsapplication.module.adapter.viewholder.ViewHolder
 import com.example.newsapplication.model.ArticlesItem
 import com.example.newsapplication.module.activity.MainActivity
 import android.util.SparseBooleanArray
-import com.example.newsapplication.module.fragment.PageNewsFragment
 import kotlinx.android.synthetic.main.main_recycleview.view.*
 
 
 class AdapterRecycle(
     private val item: ArrayList<ArticlesItem>?,
     val activityMain: MainActivity,
-    val pagenew: PageNewsFragment?
+    val pagenew: String?,
+    val callBack: (ArticlesItem) -> Unit
 ) : RecyclerView.Adapter<ViewHolder>() {
 
     var selectedItems = SparseBooleanArray()
@@ -36,7 +36,7 @@ class AdapterRecycle(
 //        selectedItems.get(position,false)
          holder.itemView.bt_ic_starborder.isSelected = selectedItems.get(position,false)
 
-         holder.bind(item!![position],pagenew,activityMain,selectedItems)
+         holder.bind(item!![position],pagenew,activityMain,selectedItems,callBack)
 
     }
 

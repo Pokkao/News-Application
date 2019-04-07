@@ -23,6 +23,7 @@ import com.example.newsapplication.R
 import com.example.newsapplication.https.NewsRetofit
 import com.example.newsapplication.module.activity.MainActivity
 import android.util.Log
+import com.example.newsapplication.constants.NewsConstants
 
 
 class PageNewsFragment : Fragment() {
@@ -32,10 +33,12 @@ class PageNewsFragment : Fragment() {
     lateinit var activityMain: MainActivity
     private var myContext: FragmentActivity? = null
     var recyclerViewState: Parcelable? = null
-    var listCurrentSelect: ArrayList<ArticlesItem>? = null
+    private var status : String?=null
 
     private var myFavoritePage :myfavoriteFragment? = null
 
+    var arrayList: ArrayList<ArticlesItem> = arrayListOf()
+    var listCurrentSelect: ArrayList<ArticlesItem>? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,6 +46,7 @@ class PageNewsFragment : Fragment() {
         Pagefm = PageNewsFragment()
         myContext = FragmentActivity()
 
+        status = NewsConstants.NEWS_STATUS_MAIN
 
     }
 
@@ -61,6 +65,7 @@ class PageNewsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         setupTitle()
         loadJson()
+
 
 
     }
@@ -87,7 +92,7 @@ class PageNewsFragment : Fragment() {
                     call.enqueue(object : Callback<ResponseNews> {
                         override fun onResponse(call: Call<ResponseNews>, response: Response<ResponseNews>) {
 //                          val jsonResponse = response.body()?.getEmployeeArrayList()
-                            initView(response.body()?.getNewsArrayList(),activityMain,Pagefm)  //articles
+                            initView(response.body()?.getNewsArrayList(),activityMain,status)  //articles
 
                             pg_load_json.visibility = View.INVISIBLE
 
@@ -111,14 +116,21 @@ class PageNewsFragment : Fragment() {
     fun initView(
         NewsArrayList: ArrayList<ArticlesItem>?,
         activityMain: MainActivity,
-        pagenew: PageNewsFragment?
+        pagenew: String?
     ) {
         recycler_view.setHasFixedSize(true)
         val layoutManager = LinearLayoutManager(context)
         recycler_view.layoutManager = layoutManager
         recycler_view.adapter =
-            AdapterRecycle(NewsArrayList, activityMain, pagenew)
+            AdapterRecycle(NewsArrayList, activityMain, pagenew
+                ,{ itemAdd ->
+                    myFavorit(itemAdd)
+                })
 
+    }
+
+    private fun myFavorit(itemAdd: ArticlesItem) {
+         arrayList.add(itemAdd)
     }
 
 
