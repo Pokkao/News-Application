@@ -19,4 +19,5 @@ application for news | แอปพลิเคชัน สำหรับอ�
     - Pattern MVC
 
 3. Coming Soon 
-    - Edit buttom star
+    - Collection News
+    - Page Setting
