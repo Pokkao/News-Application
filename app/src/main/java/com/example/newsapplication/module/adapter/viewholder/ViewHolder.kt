@@ -1,19 +1,18 @@
 package com.example.newsapplication.module.adapter.viewholder
 
 import android.support.v7.widget.RecyclerView
-import android.util.Log
 import android.util.SparseBooleanArray
 import android.view.View
 import android.widget.Toast
 import com.bumptech.glide.Glide
 import com.example.newsapplication.R
+import com.example.newsapplication.constants.NewsConstants
 import com.example.newsapplication.model.ArticlesItem
 import com.example.newsapplication.module.activity.MainActivity
+import com.example.newsapplication.module.adapter.AdapterRecycle
 import kotlinx.android.synthetic.main.main_recycleview.view.*
 
-class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-
-    var arrayList: ArrayList<ArticlesItem> = arrayListOf()
+class ViewHolder(view: View,var adapter: AdapterRecycle) : RecyclerView.ViewHolder(view) {
 
     init {
 //Ex1        this.context = context
@@ -38,17 +37,32 @@ class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
             bt_ic_starborder.isSelected = item.isChecked
 
-//            Log.d("ListArrayNoinBtn","${arrayList.size}")
+
+            when(pages?.toLowerCase()){
+                NewsConstants.NEWS_STATUS_MY_FAVORITE ->{
+                    bt_ic_starborder.visibility = View.INVISIBLE
+                    bt_ic_starborder_favorite.visibility = View.VISIBLE
+                }
+                NewsConstants.NEWS_STATUS_MAIN ->{
+                    bt_ic_starborder.visibility = View.VISIBLE
+                    bt_ic_starborder_favorite.visibility = View.INVISIBLE
+                }
+            }
+
+            bt_ic_starborder_favorite.setOnClickListener {
+                adapter.remove(adapterPosition)
+            }
+
 
             Image_topic.setOnClickListener {
-                val integer = Integer.valueOf(position)
+                        val integer = Integer.valueOf(position)
 //                Log.i("Profile","$integer")
-                if(item.content != null) {
-                    mainActivity.ProfileNews(
-                        integer, item.title!!, item.urlToImage!!, item.author!!,
-                        item.content!!, item.publishedAt!!, item.url!!, item.description!!
-                    )
-                }else {
+                        if(item.content != null) {
+                            mainActivity.ProfileNews(
+                                integer, item.title!!, item.urlToImage!!, item.author!!,
+                                item.content!!, item.publishedAt!!, item.url!!, item.description!!
+                            )
+                        }else {
                     Toast.makeText(context, "Something went wrong...Please try later!", Toast.LENGTH_SHORT).show()
 
                 }

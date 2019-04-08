@@ -131,6 +131,8 @@ class PageNewsFragment : Fragment() {
 
     private fun myFavorit(itemAdd: ArticlesItem) {
          arrayList.add(itemAdd)
+
+        activityMain.keepFavorite(arrayList)
     }
 
 

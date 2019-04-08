@@ -13,6 +13,7 @@ import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
 import com.example.newsapplication.R
+import com.example.newsapplication.model.ArticlesItem
 import com.example.newsapplication.module.fragment.PageNewsFragment
 import com.example.newsapplication.module.fragment.PageNews
 import com.example.newsapplication.module.fragment.myfavoriteFragment
@@ -24,6 +25,8 @@ class MainActivity : AppCompatActivity(),NavigationView.OnNavigationItemSelected
     var recyclerViewState: Parcelable? = null
     private val TAG = "MainActivity"
     private var viewIsAtHome: Boolean = false
+
+    var arrayList: ArrayList<ArticlesItem>?=null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -46,6 +49,10 @@ class MainActivity : AppCompatActivity(),NavigationView.OnNavigationItemSelected
         }
     }
 
+    fun keepFavorite(itemAdd: ArrayList<ArticlesItem>) {
+        arrayList = itemAdd
+        Log.d("favorite","${itemAdd.size}")
+    }
 
     fun settitlebar() {
         setSupportActionBar(my_toolbar)
@@ -120,7 +127,8 @@ class MainActivity : AppCompatActivity(),NavigationView.OnNavigationItemSelected
         when (item.itemId) {
 
             R.id.menu_list_news ->{
-                ProfileNews()
+//                ProfileNews()
+                Toast.makeText(this@MainActivity, "Coming Soon!!", Toast.LENGTH_SHORT).show()
             }
             R.id.menu_my_favorite -> {
                 myFavrite()
@@ -156,9 +164,9 @@ class MainActivity : AppCompatActivity(),NavigationView.OnNavigationItemSelected
     }
 
     private fun myFavrite() {
-        val fragment = myfavoriteFragment()
+        val fragment = myfavoriteFragment
         supportFragmentManager.beginTransaction()
-            .replace(R.id.fragment_page_news, fragment)
+            .replace(R.id.fragment_page_news, fragment.newInstance(arrayList))
             .addToBackStack(null)
             .commitAllowingStateLoss()
     }

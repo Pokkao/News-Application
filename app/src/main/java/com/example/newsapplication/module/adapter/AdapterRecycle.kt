@@ -28,7 +28,7 @@ class AdapterRecycle(
                 R.layout.main_recycleview,
                 parent,
                 false
-            )
+            ),this
         )
     }
 
